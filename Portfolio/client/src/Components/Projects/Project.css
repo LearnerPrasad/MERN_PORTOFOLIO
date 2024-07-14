@@ -1,0 +1,47 @@
+.project h2 {
+    font-weight: bold;
+    color: #138781
+}
+.project hr{
+    border-bottom: 2px solid #138781;
+}
+.card-image span{
+    position: absolute;
+    left:-10px;
+    top:-20px;
+    background: #f29f67;
+    border-radius: 30px;
+    padding: 5px 10px;
+}
+.card-detail-badge{
+    background-color: #e0b50f;
+    text-align: center;
+    border-radius: 30px;
+    padding:5px 10px;
+    font-size: 12px;
+    color:#000
+}
+.card-image-overlay{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.anchor-button{
+    color: #FFF;
+    display: block;
+    text-align: center;
+    width: 100px;
+    text-decoration: none;
+    border-radius: 80px;
+    background-color: #138781;
+    margin: 10px auto 10px auto;
+    text-transform: uppercase;
+}
+.anchor-button:hover{
+    background-color: #FFF;
+    color:#000;
+    border: 2px solid #138781;
+}
+.card:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}

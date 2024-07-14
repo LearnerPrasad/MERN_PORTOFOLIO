@@ -1,0 +1,48 @@
+.profile-pic img {
+    border-radius: 50%;
+    max-height: 150px;
+    max-width: 200px;
+    width:250px;
+    height: 100%;
+}
+
+.profile-pic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-items {
+    text-align: left;
+    color:#FFF;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+.nav-item {
+    margin: 10px 0;
+}
+
+.nav-item svg {
+    margin-right: 10px;
+}
+.large-icon{
+    font-size: 25px;
+}
+.nav-item:hover{
+    color:red;
+}
+.nav-link{
+    cursor:pointer
+}
+@media only screen and (max-width: 950px) and (orientation: landscape) {
+    .profile-pic {
+        height:112px
+    }
+}
+@media only screen and (max-width: 950px) and (orientation: landscape) {
+    .sidebar-toggle,.sidebar {
+        display: none;
+    }
+}

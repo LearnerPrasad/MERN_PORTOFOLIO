@@ -1,0 +1,26 @@
+.profile-pic-About {
+    margin: 55px
+}
+
+.profile-pic-About img {
+    border-radius: 10px;
+}
+
+.About {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.About h1 {
+    font-family: cursive;
+    border-bottom: 2px solid gray;
+    color: gray;
+    text-align: center
+}
+
+.About p {
+    text-align: justify;
+    padding: 0px 50px;
+}

@@ -1,0 +1,17 @@
+.home-container{
+    background-color: #000;
+    color:#FFF
+}
+.home-content{
+    font-size: 50px;
+}
+.Typewriter{
+    display: flex;
+    justify-content: center;
+}
+.Typewriter:hover{
+   color:red
+}
+.Home-text{
+    text-align: center;
+}

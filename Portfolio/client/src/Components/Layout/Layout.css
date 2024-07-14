@@ -1,0 +1,56 @@
+.sidebar-toggle {
+    background-color: #0a0808b0;
+    height: 100vh
+}
+
+.sidebar-toggle-icons {
+    text-align: right;
+    cursor: pointer;
+}
+
+.sidebar {
+    background-color: #0a0808b0;
+    height: 100%;
+    width: 55px
+}
+
+.sidebar-section {
+    display: flex;
+    height: 100vh
+}
+
+.main-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+
+    .sidebar-toggle,
+    .sidebar {
+        display: none;
+    }
+}
+
+/* Media query for landscape mode */
+@media only screen and (max-width: 950px) and (orientation: landscape) {
+    .sidebar-toggle {
+        display: none;
+    }
+}
+
+@media (max-width:600px) {
+    .Mobile-navbar {
+        margin-top: 51px !important
+    }
+}
+@media only screen and (max-width: 950px) and (orientation: landscape) {
+    .Mobile-navbar {
+        margin-top: 51px !important;
+        text-align: center;
+    }
+}
+.menu-icon{
+    color:#FFF;
+    width:90% !important
+}

@@ -1,0 +1,42 @@
+.mobile-nav{
+    position: fixed;
+    top:0;
+    width:100%;
+    z-index: 1;
+}
+.mobile-nav-header{
+    height:50px;
+    width:100%;
+    background-color:#1e1e2c;
+    color:#FFF;
+    padding:8px 
+}
+.title{
+    font-weight: bold;
+    text-transform:capitalize;
+    color: #f29f67;
+    margin-left: 45px;
+    vertical-align: middle;
+    font-size: 22px;
+}
+.menu-icon1{
+    font-size: xx-large;
+    cursor: pointer;
+}
+.mobile-nav-header{
+    cursor: pointer;
+}
+.mobile-nav-items{
+  position:fixed;
+  background-color: #1e1e2c;
+  z-index: 1000;
+  color:#FFF
+}
+@media (min-width:950px){
+    .mobile-nav{
+        display: none;
+    }
+}
+.mobile-nav-header span{
+    text-align: center;
+}

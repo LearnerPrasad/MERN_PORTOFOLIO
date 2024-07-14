@@ -1,0 +1,13 @@
+.container h2{
+    color: #138781;
+    font-weight: bold;
+}
+.container hr{
+    border-bottom: 2px solid #138781;
+}
+.vertical-timeline-element-title{
+    color:#138781
+}
+.education{
+    background-color:rgba(128, 128, 128, 0.101)
+}
