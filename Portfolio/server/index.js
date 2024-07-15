@@ -14,22 +14,27 @@ const app = express();
 app.use(cors());
 
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 // Get __dirname equivalent in ES module scope
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Log to verify paths
+console.log('__dirname:', __dirname);
+console.log('Path to index.html:', path.join(__dirname, '../backup/portfolio/client/build', 'index.html'));
+
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../backup/portfolio/client/build')));
 
 // The "catchall" handler: for any request that doesn't match one above,
 // send back index.html so that React Router can handle the route.
-console.log(path.join(__dirname, '../client/build', 'index.html'));
-
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../backup/portfolio/client/build', 'index.html'), (err) => {
+        if (err) {
+            res.status(500).send(err);
+        }
+    });
 });
 
 // Routes
