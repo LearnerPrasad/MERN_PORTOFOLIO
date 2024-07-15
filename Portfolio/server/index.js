@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 
 // The "catchall" handler: for any request that doesn't match one above,
 // send back index.html so that React Router can handle the route.
-
+console.log(path.join(__dirname, '../client/build', 'index.html'));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
