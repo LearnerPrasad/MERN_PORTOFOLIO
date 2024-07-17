@@ -59,16 +59,16 @@ function Contact({id}) {
     window.open(linkedInUrl, '_blank');
   };
   const handleMailClick = () => {
-    const recipientEmail = 'prasadbuddhala3816@.com'; // Replace with the recipient's email address
     const subject = encodeURIComponent('Subject of the Email');
     const body = encodeURIComponent('Hello! I visited your portfolio site and would like to connect.');
 
     // Constructing the mailto URL
-    const mailtoUrl = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+    const mailtoUrl = `mailto:prasadbuddhala1638@gmail.com?subject=${subject}&body=${body}`;
 
     // Opening the mailto link
     window.location.href = mailtoUrl;
-  };
+};
+
   return (
     <div className='container' id={id}>
       <div className='row m-4 contact'>
