@@ -4,15 +4,17 @@ import axios from 'axios';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import MailIcon from '@mui/icons-material/Mail';
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function Contact({id}) {
-
+function Contact({ id }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
+
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,54 +22,69 @@ function Contact({id}) {
       ...formData,
       [name]: value
     });
+    setErrors({
+      ...errors,
+      [name]: ''
+    });
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.name) newErrors.name = true;
+    if (!formData.email) newErrors.email = true;
+    if (!formData.message) newErrors.message = true;
+    return newErrors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      toast.error('Please enter all fields');
+      return;
+    }
+
     try {
       await axios.post('http://localhost:8080/api/v1/portfolio/sendEmail', formData);
-      toast.success('Message sent sucessfully')
+      toast.success('Email sent successfully');
       setFormData({
         name: '',
         email: '',
         message: ''
-      })
+      });
+      setErrors({});
     } catch (error) {
-      toast.error('Please enter all fields')
-      console.log(error); 
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('Failed to send email');
+      }
+      console.log(error);
     }
-  }
+  };
 
   const handleWhatsAppMessage = () => {
-    const phoneNumber = '9515195173';  // Replace with recipient's phone number
+    const phoneNumber = '9515195173';
     const message = encodeURIComponent('Hello! I visited your portfolio site and would like to connect.');
-
-    // Constructing the WhatsApp message URL
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-
-    // Opening WhatsApp in a new tab
     window.open(whatsappUrl, '_blank');
   };
+
   const handleLinkedInMessage = () => {
-    const linkedInProfile = 'https://www.linkedin.com/in/durgaprasad-buddhala/';  // Replace with recipient's LinkedIn profile URL
+    const linkedInProfile = 'https://www.linkedin.com/in/durgaprasad-buddhala/';
     const message = encodeURIComponent('Hello! I visited your portfolio site and would like to connect.');
-
-    // Constructing the LinkedIn message URL
     const linkedInUrl = `${linkedInProfile}?message=${message}`;
-
-    // Opening LinkedIn in a new tab
     window.open(linkedInUrl, '_blank');
   };
+
   const handleMailClick = () => {
     const subject = encodeURIComponent('Subject of the Email');
     const body = encodeURIComponent('Hello! I visited your portfolio site and would like to connect.');
-
-    // Constructing the mailto URL
     const mailtoUrl = `mailto:prasadbuddhala1638@gmail.com?subject=${subject}&body=${body}`;
-
-    // Opening the mailto link
     window.location.href = mailtoUrl;
-};
+  };
 
   return (
     <div className='container' id={id}>
@@ -101,6 +118,7 @@ function Contact({id}) {
               <form onSubmit={handleSubmit} className='d-flex flex-column'>
                 <div className='m-2 w-100'>
                   <input
+                    style={errors.name ? { borderColor: 'red' } : {}}
                     className='form-control'
                     type='text'
                     name='name'
@@ -111,6 +129,7 @@ function Contact({id}) {
                 </div>
                 <div className='m-2 w-100'>
                   <input
+                    style={errors.email ? { borderColor: 'red' } : {}}
                     className='form-control'
                     type='email'
                     name='email'
@@ -121,6 +140,7 @@ function Contact({id}) {
                 </div>
                 <div className='m-2 w-100'>
                   <textarea
+                    style={errors.message ? { borderColor: 'red' } : {}}
                     className='form-control'
                     name='message'
                     placeholder='Write your message'
